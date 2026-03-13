@@ -18,10 +18,10 @@ srpm:
 	@echo "=== Downloading php-quic $(QUIC_VERSION) ==="
 	curl -L -o php-quic-$(QUIC_VERSION).tar.gz $(QUIC_URL) || exit 1
 
-	# Extract and prepare source (GitHub tag tarballs extract to php-quic-v<version>)
+	# Extract and prepare source
 	@echo "=== Preparing source ==="
 	tar xzf php-quic-$(QUIC_VERSION).tar.gz || exit 1
-	mv php-quic-v$(QUIC_VERSION) php-quic-temp
+	mv php-quic-$(QUIC_VERSION) php-quic-temp
 	tar czf php-quic-$(QUIC_VERSION).tar.gz php-quic-temp/ --transform='s/php-quic-temp/php-quic-$(QUIC_VERSION)/' || exit 1
 	rm -rf php-quic-temp/
 
