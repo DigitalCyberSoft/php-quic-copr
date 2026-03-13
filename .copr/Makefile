@@ -5,7 +5,7 @@
 outdir ?= .
 
 # php-quic version (latest release)
-QUIC_VERSION = 1.0.0
+QUIC_VERSION = 1.1.0
 QUIC_URL = https://github.com/DigitalCyberSoft/php-quic/archive/refs/tags/$(QUIC_VERSION).tar.gz
 
 # Default target for COPR

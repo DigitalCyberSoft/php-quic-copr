@@ -6,7 +6,7 @@
 %global ini_name    40-%{pecl_name}.ini
 
 # Latest release version - update this to build a new version
-%global upstream_version 1.0.0
+%global upstream_version 1.1.0
 
 Name:           php-%{pecl_name}
 Version:        %{upstream_version}
