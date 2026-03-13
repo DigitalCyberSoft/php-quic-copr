@@ -5,8 +5,8 @@
 outdir ?= .
 
 # php-quic version (latest release)
-QUIC_VERSION = 1.1.0
-QUIC_URL = https://github.com/DigitalCyberSoft/php-quic/archive/refs/tags/$(QUIC_VERSION).tar.gz
+QUIC_VERSION = 1.2.0
+QUIC_URL = https://github.com/DigitalCyberSoft/php-quic/archive/refs/tags/v$(QUIC_VERSION).tar.gz
 
 # Default target for COPR
 srpm:
@@ -18,10 +18,10 @@ srpm:
 	@echo "=== Downloading php-quic $(QUIC_VERSION) ==="
 	curl -L -o php-quic-$(QUIC_VERSION).tar.gz $(QUIC_URL) || exit 1
 
-	# Extract and prepare source
+	# Extract and prepare source (GitHub tag tarballs extract to php-quic-v<version>)
 	@echo "=== Preparing source ==="
 	tar xzf php-quic-$(QUIC_VERSION).tar.gz || exit 1
-	mv php-quic-$(QUIC_VERSION) php-quic-temp
+	mv php-quic-v$(QUIC_VERSION) php-quic-temp
 	tar czf php-quic-$(QUIC_VERSION).tar.gz php-quic-temp/ --transform='s/php-quic-temp/php-quic-$(QUIC_VERSION)/' || exit 1
 	rm -rf php-quic-temp/
 

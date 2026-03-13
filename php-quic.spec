@@ -6,7 +6,7 @@
 %global ini_name    40-%{pecl_name}.ini
 
 # Latest release version - update this to build a new version
-%global upstream_version 1.1.0
+%global upstream_version 1.2.0
 
 Name:           php-%{pecl_name}
 Version:        %{upstream_version}
@@ -15,7 +15,7 @@ Summary:        QUIC protocol extension for PHP (RFC 9000)
 
 License:        MIT
 URL:            https://github.com/DigitalCyberSoft/php-quic
-Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/php-quic-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/php-quic-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  make
@@ -135,6 +135,12 @@ cp -p php_quic.h %{buildroot}%{php_incldir}/ext/%{pecl_name}/
 %{php_incldir}/ext/%{pecl_name}
 
 %changelog
+* Sat Mar 14 2026 James Campbell - 1.2.0-1
+- Add TLS options: ciphersuites, peer_name, verify_peer_name, allow_self_signed
+- Fix hostname verification (SSL_set1_host was missing)
+- Fix SOCKS5 proxy with full RFC 1928 TCP handshake and UDP ASSOCIATE
+- Add SOCKS5 username/password authentication (RFC 1929)
+
 * Fri Mar 13 2026 James Campbell - 1.0.0-1
 - Initial package
 - QUIC transport protocol for HTTP/3 (RFC 9000)
