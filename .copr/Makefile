@@ -26,9 +26,8 @@ srpm:
 	tar czf php-quic-$(QUIC_VERSION).tar.gz php-quic-temp/ --transform='s/php-quic-temp/php-quic-$(QUIC_VERSION)/' || exit 1
 	rm -rf php-quic-temp/
 
-	# Get PHP version for release tag
-	PHP_VER=$$(php-config --version); echo "  PHP version: $$PHP_VER"; \
-	echo "=== Generating spec file ==="; \
+	# Generate spec file
+	@echo "=== Generating spec file ==="; \
 	( \
 	echo '# we dont want -z defs linker flag'; \
 	echo '%undefine _strict_symbol_defs_build'; \
@@ -39,7 +38,7 @@ srpm:
 	echo ''; \
 	echo 'Name:           php-%{pecl_name}'; \
 	echo 'Version:        $(QUIC_VERSION)'; \
-	echo "Release:        1.php$${PHP_VER}%{?dist}"; \
+	echo 'Release:        1.php%{php_version}%{?dist}'; \
 	echo 'Summary:        QUIC protocol extension for PHP (RFC 9000)'; \
 	echo ''; \
 	echo 'License:        MIT'; \
