@@ -4,8 +4,8 @@
 # COPR provides outdir, set default for local testing
 outdir ?= .
 
-# php-quic version (latest release)
-QUIC_VERSION = 1.2.0
+# Fetch latest release version from GitHub (strip v prefix)
+QUIC_VERSION := $(shell curl -s https://api.github.com/repos/DigitalCyberSoft/php-quic/releases/latest | sed -n 's/.*"tag_name": *"v\?\([^"]*\)".*/\1/p')
 QUIC_URL = https://github.com/DigitalCyberSoft/php-quic/archive/refs/tags/v$(QUIC_VERSION).tar.gz
 
 # Default target for COPR
