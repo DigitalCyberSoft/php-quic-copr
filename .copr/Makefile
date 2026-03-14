@@ -7,6 +7,7 @@ outdir ?= .
 # Fetch latest release version from GitHub (strip v prefix)
 QUIC_VERSION := $(shell curl -s https://api.github.com/repos/DigitalCyberSoft/php-quic/releases/latest | sed -n 's/.*"tag_name": *"v\?\([^"]*\)".*/\1/p')
 QUIC_URL = https://github.com/DigitalCyberSoft/php-quic/archive/refs/tags/v$(QUIC_VERSION).tar.gz
+RELEASE := $(shell cat $(CURDIR)/release 2>/dev/null || echo 1)
 
 # Default target for COPR
 srpm:
@@ -37,7 +38,7 @@ srpm:
 	echo ''; \
 	echo 'Name:           php-%{pecl_name}'; \
 	echo 'Version:        $(QUIC_VERSION)'; \
-	echo 'Release:        1%{?dist}'; \
+	echo 'Release:        $(RELEASE)%{?dist}'; \
 	echo 'Summary:        QUIC protocol extension for PHP (RFC 9000)'; \
 	echo ''; \
 	echo 'License:        MIT'; \
