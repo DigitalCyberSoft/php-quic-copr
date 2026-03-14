@@ -10,6 +10,7 @@ QUIC_URL = https://github.com/DigitalCyberSoft/php-quic/archive/refs/tags/v$(QUI
 
 # Default target for COPR
 srpm:
+	dnf -y install php-devel
 	@echo "=== Starting php-quic SRPM build ==="
 	@echo "Output directory: $(outdir)"
 	@echo "Working directory: $$(pwd)"
