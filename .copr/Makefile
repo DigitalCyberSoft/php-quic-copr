@@ -37,7 +37,7 @@ srpm:
 	echo ''; \
 	echo 'Name:           php-%{pecl_name}'; \
 	echo 'Version:        $(QUIC_VERSION)'; \
-	echo 'Release:        1%{?dist}'; \
+	echo 'Release:        1.php%{php_major_version}%{php_minor_version}%{?dist}'; \
 	echo 'Summary:        QUIC protocol extension for PHP (RFC 9000)'; \
 	echo ''; \
 	echo 'License:        MIT'; \
